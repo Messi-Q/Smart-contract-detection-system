@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/jstree.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/eclipse.css">
+    <link type="text/css" rel="stylesheet" href="css/footer.css">
+    <link type="text/css" rel="stylesheet" href="css/securify.css">
+    
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/securify.js"></script>
+    <script src="js/jstree.min.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-101783117-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script language="javascript">     
+	function exec1(command) 
+	{     
+	  var ws = new ActiveXObject("WScript.Shell");      
+	  ws.run(command);
+	}     
+	</script> 
+	<script type="text/javascript">
+			$(function(){
+				// 接收后台传入的值
+				var city_id= {{name}} 
+				// alert(city_id)
+				// 设置select的值
+				$("#name").val(name)
+		})
+	</script>
+
+
+    <title>Blockchain Smart Contract Security Checking System</title>
+
+    <link rel="icon" type="image/ico" href="images/favicon.ico">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Securify: Security Scanner for Ethereum Smart Contract">
+    <meta name="twitter:description"
+          content="Scan any Ethereum contract for critical security vulnerabilities for free.">
+    <meta name="twitter:image" content="/images/og_img.png">
+    <meta property="og:title" content="Securify: Security Scanner for Ethereum Smart Contract"/>
+    <meta property="og:description"
+          content="Scan any Ethereum contract for critical security vulnerabilities for free."/>
+    <meta property="og:url" content="/"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="/images/og_img.png">
+
+    <script>
+        var vulCategoryMap = {
+            
+                "TransactionReordering": [
+                    
+                        "TODTransfer",
+                    
+                        "TODReceiver",
+                    
+                        "TODAmount",
+                    
+                ],
+            
+                "RecursiveCalls": [
+                    
+                        "DAO",
+                    
+                        "DAOConstantGas",
+                    
+                        "DAOMethodCall",
+                    
+                ],
+            
+                "InsecureCodingPatterns": [
+                    
+                        "UnrestrictedWrite",
+                    
+                        "WriteOnly",
+                    
+                        "UnhandledException",
+                    
+                        "DivisionBeforeMultiply",
+                    
+                        "DivisionBeforeCallvalue",
+                    
+                        "UnprivilegedSelfdestruct",
+                    
+                        "MissingInputValidation",
+                    
+                        "UseOfOrigin",
+                    
+                ],
+            
+                "UnexpectedEtherFlows": [
+                    
+                        "UnrestrictedEtherFlow",
+                    
+                        "LockedEther",
+                    
+                ],
+            
+                "DependenceOnUnsafeInputs": [
+                    
+                        "UnsafeCallTarget",
+                    
+                        "UnsafeDependenceOnBlock",
+                    
+                        "UnsafeDependenceOnGas",
+                    
+                        "DelegateCallWithUserInput",
+                    
+                        "RepeatedCall",
+                    
+                ],
+            
+        };
+
+        var reportShared =  true ;
+        var sharedFp = "502a9a0be926841675041195466749e3d9de90067356ebde805186f193e627eb";
+    </script>
+    <style type="text/css">
+		.progressBar {  
+		    border: solid 2px #86A5AD;  
+		    background: white url(../images/loading.gif) no-repeat 18px 35px;  
+		}  
+		  
+		.progressBar {  
+		    display: block;  
+		    width: 160px;  
+		    height: 58px;  
+		    top: 50%;  
+		    left: 50%;  
+		    margin-left: -74px;  
+		    margin-top: -14px;  
+		    padding: 10px 10px 10px 30px;  
+		    text-align: left;  
+		    line-height: 27px;  
+		    font-weight: bold;  
+		    position: fixed;  
+		    z-index: 2001;  
+		}  
+		  
+		.background {  
+		    display: block;  
+		    width: 100%;  
+		    height: 100%;  
+		    opacity: 0.4;  
+		    filter: alpha(opacity=40);  
+		    background:while;  
+		    position: fixed;  
+		    top: 0;  
+		    left: 0;  
+		    z-index: 2000;  
+		    background-color:#666666;  
+		}   
+		
+</style>
+
+</head> 
+
+<body>
+<div id="background" class="background" style="display: none; "></div>   
+<div id="progressBar" class="progressBar" style="display: none; ">正在检测中，请稍等...</div> 
+<div class="overflow-container">
+    <section class="section-1 container-fluid">
+        <div class="content-container">
+            <div class="title-item"> 区块链智能合约安全检测平台 </div>
+            <div class="desc-item">Blockchain Smart Contract Security Checking System</div>
+        </div>
+    </section>
+    <!-- section-1 -->
+    
+    <section class="section-2 container-fluid">
+        <div class="content-container">
+            <div class="container input-container z-index10">
+                <div class="contract-list">
+                    <div class="analysis-progress">
+                        <div class="analysis-progress__counter">
+                            <span class="analysis-progress__done"></span>
+                            <span class="analysis-progress__total"></span>                          
+                              <span class="analysis-progress__initial"><a href="F:\\result.txt" target="result">显示结果</a></span>                             
+                          <a data-toggle="modal" data-target="#info-scan-now" href="javascript:void(0)">
+                                <i class="fas fa-info-circle"></i>
+                           </a> 
+                           <p></p>
+                            <iframe name="result" width="200" height="30" scrolling="no" frameborder="0" 
+                            	class={
+                            	font-size: 30px;
+                            	line-height: 170%;
+                            	color: #000000;}>                           	 
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="analysis-progress__list hidden">
+                      <span class="progress-list__item">
+                          <span class="progress-list__item-wrapper--initial">
+                              <i class="far fa-file" aria-hidden="true"></i>
+                              <span>Contract1</span>
+                          </span>
+                      </span>
+                    </div>
+                </div>
+                <div class="editor-wrapper">
+                    <div class="buttons-editor">
+                        <div class="demo-container">
+                            <form class="scan-now-form form-inline" action="#">
+                                <button id="conf_btn_c" type="button"
+                                        class="btn btn_light_blue btn-default z-index10"
+                                        >
+                                                                               检测可重入性漏洞
+                                </button>
+                              <a>
+                              	<button id="conf_btn_w" type="button"
+                                        class="btn btn_light_blue btn-default z-index10">
+                                                                               检测无限循环漏洞
+                                </button>
+                              </a>
+                                <a>
+                                <button id="conf_btn_t" type="button"
+                                        class="btn btn_light_blue btn-default z-index10">
+                                                                               检测时间戳依赖漏洞
+                                </button>	
+                                </a>
+                                
+                            </form>
+                        </div>
+                        <div class="upload-type-buttons-container">
+                            <button href="javascript:void(0)" id="paste_code"
+                                    class="btn btn-default demo upload-type-button">
+                                                                           粘贴代码
+                            </button>
+                            <button href="javascript:void(0)" id="upload_files"
+                                    class="btn btn-default demo upload-type-button">
+                                                                           上传文件
+                            </button>
+                            <button href="javascript:void(0)" id="clone_git"
+                                    class="btn btn-default demo upload-type-button">
+                                Clone Git
+                            </button>
+                        </div>
+                    </div>
+                    
+                     <div id="input">
+                       <input id="name" type="text" value="simple_dao.sol" autocomplete="off" />
+                       <p></p>       
+                     </div>
+                    <div id="code-input__text" class="codeholder-container">
+                    	
+                        <div class="codeholder">
+                      <textarea rows="32" cols="120" id="code-main" name="code-main" >
+pragma solidity 0.4.25;
+library SafeMath {
+  function add(uint256 a, uint256 b) returns (uint256 c) {
+    c = a + b;
+    assert(c >= a);
+    return c;
+  }
+
+function mul(uint256 a, uint256 b) internal pure returns (uint256 c) {
+  if (a == 0) {
+    return 0;
+  }
+  c = a * b;
+  assert(c / a == b);
+    return c;
+  }
+}
+
+contract Ownable {
+   using SafeMath for uint256;
+
+   address owner;
+
+   modifier onlyOwner() {
+     require(msg.sender == owner);
+     _;
+   }
+
+   function transferOwnership(address _owner) {
+      owner = _owner;
+   }
+}
+
+contract Wallet is Ownable {
+  address walletLibrary;
+
+  function () payable {
+    walletLibrary.delegatecall(msg.data);
+  }
+
+  function kill() {
+    selfdestruct(msg.sender);
+  }
+}
+
+contract Token is Ownable{
+  uint256 seed;
+  address winner;
+  mapping(address => uint256) balances;
+  address[] investors;
+  uint256 numInvestors;
+
+
+  function sell() {
+    uint amount = balances[msg.sender];
+    msg.sender.call.value(amount)();
+    balances[msg.sender] = 0;
+  }
+
+  function applyReward(uint reward) onlyOwner {
+    require(reward > 0 && reward <= 100);
+    uint rewardAmount = (reward / 100) * balances[winner];
+    winner.call.value(rewardAmount)();
+  }
+
+  function random() returns (uint256) {
+    seed = uint256(sha3(sha3(sha3(block.blockhash(block.number), seed), tx.gasprice), now));
+    return seed;
+  }
+
+  function selectWinner() onlyOwner {
+    winner = investors[random() % numInvestors];
+  }
+
+  function runOwnerCode () {
+    require(tx.origin == owner);
+    owner.delegatecall(msg.data);
+  }
+
+  function kill(address to) {
+    selfdestruct(to);
+  }
+
+}
+</textarea>
+                       </div>                      
+                        <div id="code-input__zip" class="upload-type">
+                            <div class="file-upload-container">
+                                <form id="zip-form" class="file-upload-form" name="content">
+                                    <p>
+                                        <i class="fas fa-cloud-download-alt"></i><br><br>
+                                        <span id="drap-drop-text">Click to upload File or Drag & Drop here</span></p>
+                                    <input type="file" name="content" id="zipUpload">
+                                </form>
+                                The ZIP file must contain all contracts
+                            </div>
+                        </div>
+                        <div id="code-input__git" class="upload-type">
+                            <form class="form-inline" action="#">
+                                <div class="form-group input-field">
+                                    <input placeholder="Paste link to your Git repository"
+                                           class="form-control repository smooth-transition" id="git_url"
+                                           value="https://github.com/truffle-box/metacoin-box.git">
+                                    Support for git repositories is experimental
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- code placeholder -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-error">
+                <div class="upload-error__title">Oops!</div>
+                <div class="upload-error__message">Compiler error: ...</div>
+                <div class="upload-error__info">
+                  <textarea>
+
+                  </textarea>
+                </div>
+            </div>
+            <div class="trim-container">
+                <div class="trim trim-white"></div>
+            </div>
+        </div>
+    </section>
+    <!-- section-2 -->  
+    <footer class="footer">
+        <div class="content-container">
+            <div class="container">
+                <div class="footer__inner">
+                    <p class="copyrights">&copy; Copyright 2020. <a href="https://chainsecurity.com" target="_blank"></a>
+                    </p>
+                    <!-- /.copyrights -->
+                    <p></p>
+                    <a href="http://ice.ethz.ch/" target="_blank" class="footer__logo">ICE</a>
+                </div>
+                <!-- /.footer__inner -->
+            </div>
+        </div>
+    </footer>
+</div>
+<script>  
+    var btn_c = document.getElementById("conf_btn_c");  
+    var btn_w = document.getElementById("conf_btn_w");  
+    var btn_t = document.getElementById("conf_btn_t");  
+    btn_c.onclick =function(){  
+    	var ajaxbg = $("#background, #progressBar");  
+	     //ajaxbg.hide();  
+	    $(document).ajaxStart(function () {  
+	        ajaxbg.show();  
+	    }).ajaxStop(function () {  
+	        ajaxbg.hide();  
+	    });   
+    	var text=document.getElementById("code-main").value;
+    	var name=document.getElementById("name").value;
+		//alert(text);
+		 var strFile = "./input.txt";	//定义文件保存的路径
+	     var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+	     var objStream = objFSO.CreateTextFile(strFile, true);
+	     //document.write("创建文本文件: " + strFile + "<br>");
+	     objStream.Write(name);  //写值
+	     objStream.Close();
+	     
+		 exec1('python ./Detector/reentrancy/Graph2vec.py');
+		 exec1('python ./Detector/reentrancy/GGNNChemModel.py');
+		 
+    }  
+    btn_w.onclick =function(){  
+    	var text=document.getElementById("code-main").value;
+    	var name=document.getElementById("name").value;
+		//alert(text);
+		 var strFile = "./input.txt";	//定义文件保存的路径
+	     var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+	     var objStream = objFSO.CreateTextFile(strFile, true);
+	     //document.write("创建文本文件: " + strFile + "<br>");
+	     objStream.Write(name);  //写值
+	     objStream.Close();
+	     $(".loading").show();
+		 exec1('python ./Detector/loops/Graph2vec.py');
+		 exec1('python ./Detector/loops/GGNNChemModel.py');
+    }  
+    btn_t.onclick =function(){  
+    	var text=document.getElementById("code-main").value;
+    	var name=document.getElementById("name").value;
+		//alert(text);
+		 var strFile = "./input.txt";	//定义文件保存的路径
+	     var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+	     var objStream = objFSO.CreateTextFile(strFile, true);
+	     //document.write("创建文本文件: " + strFile + "<br>");
+	     objStream.Write(name);  //写值
+	     objStream.Close();
+	     
+		 exec1('python ./Detector/timestamp/Graph2vec.py');
+		 exec1('python ./Detector/timestamp/GGNNChemModel.py');
+    }  
+</script>  
+
+</body>
+
+</html>

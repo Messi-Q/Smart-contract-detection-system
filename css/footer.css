@@ -1,0 +1,84 @@
+.footer {
+    background: #0d62f5;
+    color: #fff;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: 0;
+    padding-bottom: 10px;
+}
+
+.footer .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.footer .footer__inner p {
+    margin-bottom: 0;
+}
+
+footer .container {
+    position: relative;
+    padding: 70px 1px 1px;
+    font-size: .9rem;
+}
+
+footer .container a {
+    color: white;
+    text-decoration: none;
+}
+
+footer .container a:hover {
+    text-decoration: underline;
+}
+
+
+.footer__logo {
+    background: url(../images/ice-center-logo-eth.png) no-repeat 0 0;
+    min-width: 200px;
+    min-height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    background-size: 100% 100%;
+}
+
+.footer .copyrights {
+    padding-left: 15px;
+    letter-spacing: 0.01em;
+}
+
+@media (min-width: 992px) {
+  .footer .copyrights--right {
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer .copyrights--right {
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+    footer .footer__inner {
+        flex-direction: column;
+    }
+
+    .footer__inner p {
+        margin-top: 10px;
+    }
+
+    .footer__inner a {
+        order: 0;
+    }
+
+    .footer__inner p:nth-of-type(1) {
+        order: 2;
+    }
+
+    .footer__inner p:nth-last-of-type(2) {
+        order: 3;
+    }
+}
