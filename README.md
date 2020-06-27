@@ -6,5 +6,7 @@ The front-end framework of smart contract vulnerability detection.
 
 This page is borrowed from [Securify](https://securify.chainsecurity.com/).
 
-<div img="./fig/front.png" width=500pt> <div> 
+<div>
+  <img src="./fig/front.png" width="50%">
+<div> 
 
